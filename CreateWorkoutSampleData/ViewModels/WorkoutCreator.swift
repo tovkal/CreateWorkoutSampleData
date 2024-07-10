@@ -105,7 +105,8 @@ final class WorkoutCreator: ObservableObject {
         .running,
         .swimming,
         .cycling,
-        .hiking
+        .hiking,
+        .paddleSports
     ]
     /// The current picked activity type
     @Published var activityType: HKWorkoutActivityType = .walking
@@ -368,7 +369,9 @@ final class WorkoutCreator: ObservableObject {
                 samples.append(HKQuantitySample(type: quantityTypeSwimmingStrokeCount, quantity: quantitySwimmingStrokeCount, start: start, end: end))
                 usedTime += timeForLap
             }
-            
+        case .paddleSports:
+            return []
+
         default:
             assertionFailure("Unhandled activity type")
             return []
@@ -411,7 +414,7 @@ final class WorkoutCreator: ObservableObject {
                 locations.append(CLLocation(latitude: currentLatitude, longitude: currentLongitude))
             }
             
-        case .hiking:
+        case .hiking, .paddleSports:
             for _ in stride(from: 0, to: Int(timeInterval), by: 1) {
                 currentLatitude += deltaLat * 0.9
                 currentLongitude += deltaLon * 0.9

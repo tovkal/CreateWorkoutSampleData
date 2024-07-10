@@ -16,6 +16,7 @@ extension HKWorkoutActivityType: CustomStringConvertible {
         case .cycling: return "Cycling"
         case .swimming: return "Swimming"
         case .hiking: return "Hiking"
+        case .paddleSports: return "Paddle"
         default: return "Unknown"
         }
     }
