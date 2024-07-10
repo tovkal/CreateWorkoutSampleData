@@ -225,11 +225,11 @@ final class WorkoutCreator: ObservableObject {
         
         if locationType == .outdoor {
             let routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: device)
-            try? await routeBuilder.insertRouteData(createSampleRoute(for: workoutTimeInterval))
-            let routeMetaData: [String : Any] = [
-                HKMetadataKeyTimeZone : TimeZone.current.identifier
-            ]
             do {
+                try await routeBuilder.insertRouteData(createSampleRoute(for: workoutTimeInterval, startDate: workoutStartDate))
+                let routeMetaData: [String : Any] = [
+                    HKMetadataKeyTimeZone : TimeZone.current.identifier
+                ]
                 try await routeBuilder.finishRoute(with: workout, metadata: routeMetaData)
             } catch {
                 print(error.localizedDescription)
