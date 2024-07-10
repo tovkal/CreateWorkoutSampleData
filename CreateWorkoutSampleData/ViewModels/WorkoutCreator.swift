@@ -387,7 +387,7 @@ final class WorkoutCreator: ObservableObject {
     /// Going North/South: 1m is about 0.000009º
     /// - Parameter timeInterval: The time interval for which the route is needed. The amount of points depend on it
     /// - Returns: The Locations of the sample route
-    private func createSampleRoute(for timeInterval: TimeInterval) -> [CLLocation] {
+    private func createSampleRoute(for timeInterval: TimeInterval, startDate: Date) -> [CLLocation] {
         guard activityType != .swimming,
               locationType == .outdoor
         else { return [] }
@@ -401,31 +401,64 @@ final class WorkoutCreator: ObservableObject {
         
         switch activityType {
         case .walking:
-            for _ in stride(from: 0, to: Int(timeInterval), by: 1) {
+            for index in stride(from: 0, to: Int(timeInterval), by: 1) {
                 currentLatitude += deltaLat * 1.7
                 currentLongitude += deltaLon * 1.7
-                locations.append(CLLocation(latitude: currentLatitude, longitude: currentLongitude))
+                locations.append(
+                    CLLocation(
+                        coordinate: .init(latitude: currentLatitude, longitude: currentLongitude),
+                        altitude: 0,
+                        horizontalAccuracy: 3,
+                        verticalAccuracy: 3,
+                        timestamp: startDate.addingTimeInterval(Double(index))
+                    )
+                )
             }
             
         case .running:
-            for _ in stride(from: 0, to: Int(timeInterval), by: 1) {
+            for index in stride(from: 0, to: Int(timeInterval), by: 1) {
                 currentLatitude += deltaLat * 2.6
                 currentLongitude += deltaLon * 2.6
-                locations.append(CLLocation(latitude: currentLatitude, longitude: currentLongitude))
+                locations.append(
+                    CLLocation(
+                        coordinate: .init(latitude: currentLatitude, longitude: currentLongitude),
+                        altitude: 0,
+                        horizontalAccuracy: 3,
+                        verticalAccuracy: 3,
+                        timestamp: startDate.addingTimeInterval(Double(index))
+                    )
+                )
+
             }
             
         case .hiking, .paddleSports:
-            for _ in stride(from: 0, to: Int(timeInterval), by: 1) {
+            for index in stride(from: 0, to: Int(timeInterval), by: 1) {
                 currentLatitude += deltaLat * 0.9
                 currentLongitude += deltaLon * 0.9
-                locations.append(CLLocation(latitude: currentLatitude, longitude: currentLongitude))
+                locations.append(
+                    CLLocation(
+                        coordinate: .init(latitude: currentLatitude, longitude: currentLongitude),
+                        altitude: 0,
+                        horizontalAccuracy: 3,
+                        verticalAccuracy: 3,
+                        timestamp: startDate.addingTimeInterval(Double(index))
+                    )
+                )
             }
             
         case .cycling:
-            for _ in stride(from: 0, to: Int(timeInterval), by: 1) {
+            for index in stride(from: 0, to: Int(timeInterval), by: 1) {
                 currentLatitude += deltaLat * 4.9
                 currentLongitude += deltaLon * 4.9
-                locations.append(CLLocation(latitude: currentLatitude, longitude: currentLongitude))
+                locations.append(
+                    CLLocation(
+                        coordinate: .init(latitude: currentLatitude, longitude: currentLongitude),
+                        altitude: 0,
+                        horizontalAccuracy: 3,
+                        verticalAccuracy: 3,
+                        timestamp: startDate.addingTimeInterval(Double(index))
+                    )
+                )
             }
             
         default:
