@@ -111,8 +111,8 @@ final class WorkoutCreator: ObservableObject {
         .paddleSports
     ]
     /// The current picked activity type
-    @Published var activityType: HKWorkoutActivityType = .walking
-    
+    @Published var activityType: HKWorkoutActivityType = .paddleSports
+
     /// A list of all the available location types
     let availableLocationTypes: [HKWorkoutSessionLocationType] = [
         .outdoor,
