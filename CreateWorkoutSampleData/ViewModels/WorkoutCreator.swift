@@ -372,7 +372,26 @@ final class WorkoutCreator: ObservableObject {
                 usedTime += timeForLap
             }
         case .paddleSports:
-            return []
+            let quantityTypeDistance = HKQuantityType.init(.distancePaddleSports)
+
+            var usedTime: TimeInterval = 0
+            while usedTime < workoutTimeInterval {
+                let randomDistance = Double.random(in: 3 ... 6) /// Distance in meter
+                let randomSpeed = TimeInterval.random(in: 4 ... 6) /// Speed in km/h
+
+                var timeForSample: TimeInterval = randomDistance * 3.6 / randomSpeed /// Time in seconds
+                if usedTime + timeForSample > workoutTimeInterval {
+                    timeForSample = workoutTimeInterval - usedTime
+                }
+
+                let quantityDistance = HKQuantity(unit: .meter(), doubleValue: randomDistance)
+
+                let start = workoutStartDate.advanced(by: usedTime)
+                let end = start.advanced(by: timeForSample)
+
+                samples.append(HKQuantitySample(type: quantityTypeDistance, quantity: quantityDistance, start: start, end: end))
+                usedTime += timeForSample
+            }
 
         default:
             assertionFailure("Unhandled activity type")
