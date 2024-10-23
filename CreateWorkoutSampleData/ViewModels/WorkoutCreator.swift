@@ -49,8 +49,9 @@ final class WorkoutCreator: ObservableObject {
             HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!,
             HKSampleType.quantityType(forIdentifier: .distanceCycling)!,
             HKSampleType.quantityType(forIdentifier: .distanceSwimming)!,
+            HKSampleType.quantityType(forIdentifier: .distancePaddleSports)!,
             HKSampleType.quantityType(forIdentifier: .stepCount)!,
-            HKSampleType.quantityType(forIdentifier: .swimmingStrokeCount)!
+            HKSampleType.quantityType(forIdentifier: .swimmingStrokeCount)!,
         ]
         let read: Set<HKObjectType> = [
             HKSeriesType.activitySummaryType(),
@@ -59,6 +60,7 @@ final class WorkoutCreator: ObservableObject {
             HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!,
             HKSampleType.quantityType(forIdentifier: .distanceCycling)!,
             HKSampleType.quantityType(forIdentifier: .distanceSwimming)!,
+            HKSampleType.quantityType(forIdentifier: .distancePaddleSports)!,
             HKSampleType.quantityType(forIdentifier: .stepCount)!,
             HKSampleType.quantityType(forIdentifier: .swimmingStrokeCount)!
         ]
