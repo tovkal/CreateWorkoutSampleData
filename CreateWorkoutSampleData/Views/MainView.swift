@@ -113,6 +113,7 @@ struct MainView: View {
                                         Text("Start longitude: ")
                                         TextField("Enter longitude", text: $creator.workoutStartLongitude)
                                     }
+                                    Toggle("Add route", isOn: $creator.addRoute)
                                 }
                             }
                             

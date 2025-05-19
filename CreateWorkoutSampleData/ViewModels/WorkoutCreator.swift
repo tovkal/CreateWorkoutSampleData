@@ -139,6 +139,9 @@ final class WorkoutCreator: ObservableObject {
     /// The current picked pool lap length
     @Published var lapLength: String = "25"
     
+    /// Toggle to control whether to add route data
+    @Published var addRoute: Bool = true
+    
     /// The current picked workout start date
     @Published var workoutStartDate: Date = Date()
     /// The current picked workout end date
@@ -225,7 +228,8 @@ final class WorkoutCreator: ObservableObject {
             return
         }
         
-        if locationType == .outdoor {
+        // Only add route if locationType is outdoor AND addRoute is true
+        if locationType == .outdoor && addRoute {
             let routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: device)
             do {
                 try await routeBuilder.insertRouteData(createSampleRoute(for: workoutTimeInterval, startDate: workoutStartDate))
