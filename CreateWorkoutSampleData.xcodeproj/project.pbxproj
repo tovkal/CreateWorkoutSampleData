@@ -326,7 +326,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CreateWorkoutSampleData/Preview Content\"";
-				DEVELOPMENT_TEAM = DAM38C873E;
+				DEVELOPMENT_TEAM = JVHN2X67GT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Read data from HealthKit";
@@ -359,7 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CreateWorkoutSampleData/Preview Content\"";
-				DEVELOPMENT_TEAM = DAM38C873E;
+				DEVELOPMENT_TEAM = JVHN2X67GT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Read data from HealthKit";
